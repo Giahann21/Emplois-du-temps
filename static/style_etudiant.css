@@ -1,0 +1,105 @@
+body {
+    background-color: #e1ebf4; 
+    color: #3d3d3d; 
+    font-family: 'Arial', sans-serif; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #cb0f90; 
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#edt-banner {
+    background-color: #f59ed0; /* Rose pastel */
+    color: #fff; /* Texte en blanc */
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#cours-form {
+    background-color: #9fbcee; /* Bleu pastel */
+    padding: 80px;
+    border-radius: 20px;
+    width: 70%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+select,
+button {
+    padding: 10px;
+    margin: 5px;
+}
+
+button {
+    background-color: #eb3424; /* Rouge pastel */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cours-table {
+    background-color: rgba(255, 255, 255, 0.8); /* Fond blanc transparent pour le tableau */
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th,
+td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #034f84; /* Bleu foncé */
+    color: white;
+}
+
+#footer {
+    margin-top: 20px;
+    text-align: right;
+    color: #555;
+}
+
+/* Ajout de styles pour la barre de navigation */
+nav {
+    margin-top: -200px;
+    background-color: #e1ebf4; /* Jaune pastel */
+    overflow: hidden;
+    width: 100%;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: #3d3d3d; /* Texte en gris foncé */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    background-color: #fff; /* Fond blanc */
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+

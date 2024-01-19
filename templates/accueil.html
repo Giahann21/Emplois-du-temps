@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accueil</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style_accueil.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='script_accueil.js') }}"></script>
+</head>
+ 
+<body>
+<!-- Autres éléments de votre page -->
+<div id="bande-citations">
+<ul id="citations-list">
+<li class="citation">"La persévérance est la clé du succès."</li>
+<li class="citation">"Chaque échec est une étape vers la réussite."</li>
+<li class="citation">"Le succès n'est pas la clé du bonheur, le bonheur est la clé du succès."</li>
+<li class="citation">"La connaissance vient, mais la sagesse persiste."</li>
+<li class="citation">"L'éducation est l'arme la plus puissante que vous pouvez utiliser pour changer le monde."</li>
+<li class="citation">"Le seul endroit où le succès vient avant le travail est dans le dictionnaire."</li>
+<li class="citation">"N'ayez pas peur de faire des erreurs, ayez peur de ne pas apprendre d'elles."</li>
+<li class="citation">"La meilleure façon de prédire l'avenir est de le créer."</li>
+<li class="citation">"Le seul moment où vous avez raison d'échouer, c'est la dernière fois que vous essayez."</li>
+</ul>
+</div>
+<div class="container">
+<img id="university-logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a3/Logo_Universit%C3%A9_Paris-Nanterre.svg" alt="Logo de l'université">
+<button class="espace-enseignant-btn" onclick="redirigerEspaceEnseignant()">Espace Enseignant</button>
+ 
+        <form method="POST" class="login-form">
+<label for="Numero_etudiant">Numéro d'étudiant:</label>
+<input type="text" id="Numero_etudiant" name="Numero_etudiant" required>
+<label for="Mot_de_passe">Mot de passe:</label>
+<input type="password" id="Mot_de_passe" name="Mot_de_passe" required>
+ 
+            <button type="submit" name="connexion">Connexion</button>
+<button type="button" class="toggle-form-btn" onclick="toggleModal()">Inscription</button>
+</form>
+ 
+        <div id="inscription-modal" class="modal">
+<div class="modal-content">
+<span class="toggle-form-btn" onclick="toggleModal()">Fermer</span>
+<form method="POST">
+<div>
+<label for="numero_etudiant">Numéro d'étudiant:</label>
+<input type="text" id="numero_etudiant" name="numero_etudiant" required>
+</div>
+<div>
+<label for="mot_de_passe">Mot de passe:</label>
+<input type="password" id="mot_de_passe" name="mot_de_passe" required>
+</div>
+<div>
+<label for="niveau_etude">Niveau d'étude:</label>
+<input type="text" id="niveau_etude" name="niveau_etude" required>
+</div>
+<div>
+<label for="code_td">Code TD:</label>
+<input type="text" id="code_td" name="code_td" required>
+</div>
+<div>
+<button type="submit" name="inscription">Inscription</button>
+</div>
+</form>
+</div>
+</div>
+<script>
+        function toggleModal() {
+            var modal = document.getElementById('inscription-modal');
+            modal.style.display = (modal.style.display === 'none') ? 'flex' : 'none';
+        }
+ 
+        function redirigerEspaceEnseignant() {
+            window.location.href = "{{ url_for('espace_enseignant') }}";
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emploi du temps Enseignant</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style_enseignant.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ url_for('static', filename='script_enseignant.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Emploi du temps de {{ nom_enseignant }}</h1>
+
+        <div id="calendar"></div>
+
+        <div class="emploidutemps">
+            {% if cours_enseignant_par_semaine %}
+                {% for semaine, cours_list in cours_enseignant_par_semaine.items() %}
+                    <div class="semaine">
+                        <h2>Semaine du {{ semaine }}</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Code Cours</th>
+                                    <th>Jour</th>
+                                    <th>Durée</th>
+                                    <th>Début</th>
+                                    <th>Fin</th>
+                                    <th>Activité</th>
+                                    <th>Salle</th>
+                                    <th>Type de cours</th>
+                                    <th>Groupe TD</th>
+                                    <th>Niveau d'étude</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cours_info in cours_list %}
+                                    <tr>
+                                        <td>{{ cours_info['Code_cours'] }}</td>
+                                        <td>{{ cours_info['Jour'] }}</td>
+                                        <td>{{ cours_info['Duree'] }}</td>
+                                        <td>{{ cours_info['Debut'] }}</td>
+                                        <td>{{ cours_info['Fin'] }}</td>
+                                        <td>{{ cours_info['Activite'] }}</td>
+                                        <td>{{ cours_info['Salle'] }}</td>
+                                        <td>{{ cours_info['Type_cours'] }}</td>
+                                        <td>{{ cours_info['Groupe_TD'] }}</td>
+                                        <td>{{ cours_info['Niveau_etude'] }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Aucun cours pour la semaine sélectionnée.</p>
+            {% endif %}
+        </div>
+        <div id="footer">
+            <p>© 2023 Université Paris Nanterre</p>
+        </div>
+    </div>
+</body>
+</html>

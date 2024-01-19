@@ -1,0 +1,91 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e1ebf4;
+    color: #3d3d3d;
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: auto;
+}
+
+h1 {
+    color: #E30613;
+    font-size: 32px;
+}
+
+.emploidutemps {
+    margin-top: 20px;
+}
+
+.semaine {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Ajout d'un style pour les liens */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+/* Style pour les boutons */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Style pour les messages d'erreur ou de succès */
+.flash-message {
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+#calendar {
+    margin-top: 20px;
+}
