@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emplois du temps</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style_etudiant.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='script_etudiant.js') }}"></script>
-       
 </head>
-
 <body>
     <nav>
         <a href="/">Déconnexion</a>
@@ -22,28 +18,30 @@
     <div id="cours-form">
         <form method="POST" style="display: flex; align-items: center;">
             <label for="niveau_etude">Choisissez le niveau d'étude :</label>
-            <select id="niveau_etude" name="niveau_etude" onchange="updateGroupesTD()">
+            <select id="niveau_etude" name="niveau_etude" onchange="this.form.submit()">
                 {% for niveau in niveaux_etude %}
-                <option value="{{ niveau }}" {% if niveau == niveau_etude_selectionne %}selected{% endif %}>{{ niveau }}</option>
+                    <option value="{{ niveau }}" {% if niveau == niveau_etude_selectionne %}selected{% endif %}>{{ niveau }}</option>
                 {% endfor %}
             </select>
 
             <label for="groupe_td">Choisissez le groupe TD :</label>
             <select id="groupe_td" name="groupe_td">
                 {% for groupe in groupes_td[niveau_etude_selectionne] %}
-                <option value="{{ groupe }}" {% if groupe == groupe_td_selectionne %}selected{% endif %}>{{ groupe }}</option>
+                    <option value="{{ groupe.Nom_TD }}" {% if groupe.Nom_TD == groupe_td_selectionne %}selected{% endif %}>
+                        {{ groupe.Nom_TD }}
+                    </option>
                 {% endfor %}
             </select>
 
             <label for="date_selectionnee">Choisissez la date :</label>
-            <input type="date" id="date_selectionnee" name="date_selectionnee">
+            <input type="date" id="date_selectionnee" name="date_selectionnee" value="{{ date_selectionnee or '' }}">
 
             <button type="submit">Afficher l'emploi du temps</button>
         </form>
     </div>
 
     {% if cours_data %}
-    <h2>Emploi du temps pour {{ niveau_etude_selectionne }} - {{ groupe_td_selectionne }}</h2>
+    <h2>Emploi du temps pour {{ groupe.Niveau_etude }} - {{ nom_td }}</h2>
     <table id="cours-table">
         <thead>
             <tr>
@@ -72,7 +70,7 @@
                 <td>{{ cours['Salle'] }}</td>
                 <td>{{ cours['Enseignant'] }}</td>
                 <td>{{ cours['Type_cours'] }}</td>
-                <td>{{ cours['Groupe_TD'] }}</td>
+                <td>{{ cours['Nom_TD'] }}</td>
                 <td>{{ cours['Niveau_etude'] }}</td>
             </tr>
             {% endfor %}
@@ -83,7 +81,5 @@
     <div id="footer">
         <p>© 2023 Université Paris Nanterre</p>
     </div>
-
 </body>
-
 </html>

@@ -1,20 +1,37 @@
-function updateGroupesTD() {
-    var niveauSelect = document.getElementById("niveau_etude");
-    var groupeSelect = document.getElementById("groupe_td");
-    groupeSelect.innerHTML = "";
+document.addEventListener("DOMContentLoaded", function () {
+    const niveauxTd = {
+        "L1": ["TD06", "TD07", "TD08", "TD09", "TD10", "TD11"],
+        "L2": ["TD06", "TD07", "TD08", "TD09", "TD10", "TD11", "OG3"],
+        "L3": ["TD1", "TD2", "TD03A", "TD03B"]
+    };
 
-    var selectedNiveau = niveauSelect.options[niveauSelect.selectedIndex].value;
-    var groupes = {
-        'L1': ['TD06 - MIASHS + Bessières Maths', 'TD07 - MIASHS', 'TD08 - MIASHS (et Oui, si)', 'TD09 - DL Economie-Maths', 'TD10 - DL Gestion-Info', 'TD11 - Economie-Gestion CMI'],
-        'L2': ['TD06 - MIASHS (Maths Appliquées) + Bessières', 'TD07 - DL Économie-Maths', 'TD08 - MIASHS parcours MIAGE', 'TD09 - MIASHS parcours MIAGE', 'TD10 - DL Gestion-Informatique', 'TD11 - Économie-Gestion CMI'],
-        'L3': ['TD1 - L3 MIAGE CLA', 'TD2 - L3 MIAGE CLA', 'TD3 - DL Info-Gestion', 'TD03 - CMI']
-    }
-    if (groupes && groupes[selectedNiveau]) {
-        groupes[selectedNiveau].forEach(function (groupe) {
-            var option = document.createElement("option");
-            option.value = groupe;
-            option.text = groupe;
-            groupeSelect.add(option);
+    const selectNiveau = document.getElementById("niveau_etude");
+    const selectGroupe = document.getElementById("groupe_td");
+
+    function updateGroupesTD() {
+        const niveau = selectNiveau.value;
+        const groupes = niveauxTd[niveau] || [];
+
+        // Sauvegarder la sélection précédente
+        const previous = selectGroupe.value;
+
+        // Réinitialiser les options
+        selectGroupe.innerHTML = "";
+
+        groupes.forEach(code => {
+            const option = document.createElement("option");
+            option.value = code;
+            option.textContent = code;
+            if (code === previous) {
+                option.selected = true;
+            }
+            selectGroupe.appendChild(option);
         });
     }
-}
+
+    // Déclenche au chargement de la page
+    if (selectNiveau && selectGroupe) {
+        updateGroupesTD();
+        selectNiveau.addEventListener("change", updateGroupesTD);
+    }
+});
